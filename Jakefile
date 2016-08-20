@@ -1,8 +1,8 @@
-var fs = require('fs')
-  , buildOpts = {
-      printStdout: true
-    , printStderr: true
-    };
+/* global jake, task, complete, desc, publishTask */
+var buildOpts = {
+    printStdout: true,
+    printStderr: true
+  };
 
 task('build', ['browserify', 'minify'], function () {
   console.log('Build completed.');
@@ -32,13 +32,13 @@ task('minify', {async: true}, function () {
 
 publishTask('ejs', ['build'], function () {
   this.packageFiles.include([
-    'Jakefile'
-  , 'README.md'
-  , 'LICENSE'
-  , 'package.json'
-  , 'ejs.js'
-  , 'ejs.min.js'
-  , 'lib/**'
-  , 'test/**'
+    'Jakefile',
+    'README.md',
+    'LICENSE',
+    'package.json',
+    'ejs.js',
+    'ejs.min.js',
+    'lib/**',
+    'test/**'
   ]);
 });
